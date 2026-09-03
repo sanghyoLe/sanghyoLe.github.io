@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이상효 포트폴리오</title>
+<style>
+/* 웹사이트형, 다크 단일 테마, 좌측 고정 프로필 + 우측 스크롤 */
+:root{
+  --bg:#16181d;
+  --bg-2:#1d2026;
+  --ink:#d7d5cf;
+  --muted:#8e8d87;
+  --accent:#e8b04b;
+  --rule:#2a2d34;
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+html,body{overflow-x:clip;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Segoe UI",sans-serif;
+  line-height:1.75; word-break:keep-all;
+}
+.layout{
+  max-width:72rem; margin:0 auto; padding:0 1.5rem;
+  display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:4rem;
+}
+.side{
+  position:sticky; top:0; align-self:start;
+  height:100dvh; display:flex; flex-direction:column;
+  padding:5rem 0 3rem;
+}
+.main{padding:5rem 0 6rem;}
+@media (max-width: 56rem){
+  .layout{display:block;}
+  .side{position:static; height:auto; padding:3rem 0 0;}
+  .main{padding:2rem 0 4rem;}
+  .side nav{display:none;}
+}
+h1{font-size:2.6rem; line-height:1.2; margin:0; letter-spacing:-.02em; color:#fff;}
+.role{font-size:1.05rem; margin:.6rem 0 0; color:var(--ink);}
+.tagline{color:var(--muted); margin:1rem 0 0; max-width:26rem;}
+.side nav{margin-top:3.5rem;}
+.side nav a{
+  display:flex; align-items:center; gap:.75rem;
+  color:var(--muted); text-decoration:none;
+  font-family:var(--mono); font-size:.78rem; letter-spacing:.1em;
+  padding:.45rem 0;
+}
+.side nav a::before{
+  content:""; width:2rem; height:1px; background:var(--muted);
+  transition:width .2s, background-color .2s;
+}
+.side nav a:hover, .side nav a.active{color:#fff;}
+.side nav a:hover::before, .side nav a.active::before{width:3.5rem; background:var(--accent);}
+.links{margin-top:auto; display:flex; flex-wrap:wrap; gap:.3rem 1.3rem; font-family:var(--mono); font-size:.8rem;}
+@media (max-width:56rem){ .links{margin-top:1.5rem;} }
+a{color:var(--accent);}
+.links a{color:var(--muted); text-decoration:none;}
+.links a:hover{color:var(--accent);}
+a:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px;}
+section{margin:0 0 5rem;}
+section:last-child{margin-bottom:0;}
+h2{
+  font-family:var(--mono); font-size:.8rem; letter-spacing:.14em;
+  color:#fff; margin:0 0 1.5rem;
+}
+.entry{
+  display:grid; grid-template-columns:8.5rem minmax(0,1fr); gap:1.25rem;
+  padding:1.1rem 1rem; margin:0 -1rem;
+  border-radius:6px;
+}
+@media (hover:hover){
+  .entry:hover{background:var(--bg-2);}
+}
+@media (max-width:40rem){ .entry{grid-template-columns:1fr; gap:.2rem;} }
+.entry .when{
+  font-family:var(--mono); font-size:.75rem; color:var(--muted);
+  padding-top:.3rem; font-variant-numeric:tabular-nums;
+}
+.entry h3{font-size:1.05rem; margin:0; color:#fff; font-weight:600;}
+.entry p{margin:.45rem 0 0; color:var(--ink); font-size:.95rem;}
+.entry .note{color:var(--muted); font-size:.85rem;}
+.entry .tech{
+  margin:.7rem 0 0; font-family:var(--mono); font-size:.75rem; color:var(--muted);
+}
+.about p{margin:0 0 1rem; color:var(--ink);}
+.about .aside{color:var(--muted); font-size:.92rem;}
+.stack-line{font-family:var(--mono); font-size:.8rem; color:var(--muted); line-height:2.1; margin:0;}
+.shot{margin:1rem 0 0;}
+.shot img{width:100%; display:block; border:1px solid var(--rule); border-radius:10px;}
+.entry h3 a{color:inherit; text-decoration:none;}
+.entry h3 a::after{content:" ↗"; color:var(--accent); font-size:.85em;}
+.entry h3 a:hover{color:var(--accent);}
+@media print{
+  :root{--bg:#fff; --bg-2:#fff; --ink:#26292e; --muted:#5c6067; --accent:#8a5c10; --rule:#d8dbe0;}
+  body{font-size:10.5pt;}
+  .layout{display:block; max-width:none; padding:0;}
+  .side{position:static; height:auto; padding:0 0 1.2rem; display:block;}
+  .side nav{display:none;}
+  .links{margin-top:.6rem;}
+  .main{padding:0;}
+  section{margin-bottom:2.2rem;}
+  .entry{break-inside:avoid; padding:.7rem 0; margin:0;}
+  h1, .entry h3, h2{color:#000;}
+}
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+<header class="side">
+  <h1>이상효</h1>
+  <p class="role">프론트엔드 엔지니어</p>
+  <p class="tagline">문제를 고치는 데서 멈추지 않고, 같은 문제가 반복되지 않는 구조를 만듭니다.</p>
+  <nav aria-label="섹션">
+    <a href="#about">ABOUT</a>
+    <a href="#work">WORK</a>
+    <a href="#projects">PROJECTS</a>
+    <a href="#experience">EXPERIENCE</a>
+    <a href="#stack">STACK</a>
+  </nav>
+  <div class="links">
+    <a href="mailto:gilsport1@gmail.com">Email</a>
+    <a href="https://github.com/sanghyoLe">GitHub</a>
+    <a href="https://kunsae.tistory.com/">Blog</a>
+  </div>
+</header>
+
+<main class="main">
+
+<section id="about" class="about">
+  <h2>ABOUT</h2>
+  <p>5년차 프론트엔드 엔지니어로, 신재생에너지 거래 플랫폼에서 일하고 있습니다. 고객용 플랫폼과 백오피스, 공통 프론트엔드 라이브러리, OpenAPI 기반 API SDK 생성 저장소까지 같이 관리합니다. React와 TypeScript가 주력이고, 화면 구현에 그치지 않고 인증, 권한, 실시간 메시징, 번들링, 배포처럼 서비스 운영에 필요한 기반을 함께 설계해왔습니다.</p>
+  <p>버그가 화면 문제인지 데이터 문제인지 애매할 때는 DB에 직접 쿼리를 쳐서 확인합니다. 원인이 어느 쪽인지 빨리 좁히는 걸 잘합니다.</p>
+  <p>최근에는 사내 문서를 Slack과 개발 도구에서 검색하는 RAG 위키봇을 구축/운영하며, AI 도구를 실제 업무 흐름에 연결하는 영역으로 확장하고 있습니다.</p>
+</section>
+
+<section id="work">
+  <h2>WORK</h2>
+
+  <div class="entry">
+    <span class="when">씨너지</span>
+    <div>
+      <h3>401 재시도 큐와 토큰 재발급 처리</h3>
+      <p>계약 작성 중 토큰이 만료되면 입력 내용이 사라지는 문제를 해결하기 위해 구현했습니다. 401을 가로채 토큰을 재발급하고, 실패한 요청을 본문 그대로 재전송합니다. 동시에 여러 요청이 401을 받아도 첫 요청만 재발급을 실행하고 나머지는 실패 큐에서 대기 후 일괄 재시도하며, 재시도 플래그로 무한 루프를, 제외 목록으로 비밀번호 오입력 같은 401의 오동작을 방지했습니다.</p>
+      <p class="note">토큰 조회/재발급/세션 정리를 콜백으로 주입받는 구조로 설계해, 인증 방식(Bearer/Basic)이 다른 axios 인스턴스 5개가 같은 로직을 재사용합니다. 세션 정리 시 WebSocket 연결도 함께 종료합니다. 끊지 않으면 만료된 토큰으로 10초 간격 재연결이 반복되기 때문입니다.</p>
+      <figure class="shot"><img src="assets/auth.png" alt="401 재시도 큐 구조: 동시 다발 401을 첫 요청만 재발급하고 나머지는 큐 대기 후 일괄 재시도, 실패 시 세션 정리와 WebSocket 종료"></figure>
+      <p class="tech">Axios interceptor, Promise queue, STOMP/SockJS</p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="when">씨너지</span>
+    <div>
+      <h3>사내 위키봇 — Notion 문서를 Slack에서 검색</h3>
+      <p>사내 지식이 Notion에 흩어져 찾기 어려운 문제를 해소하고자 직접 기획/개발한 사내 도구입니다. Notion 문서와 GitHub 개발 문서를 색인하고, Slack에서 질문하면 Claude가 문서를 근거로 답변합니다. 검색은 벡터 검색과 BM25를 RRF로 병합한 하이브리드 구조에 최신성 재랭킹(반감기 180일)을 적용했고, Notion은 수정 시각/GitHub 문서는 본문 해시를 비교해 변경분만 재색인하도록 일일 CronJob으로 자동화했습니다.</p>
+      <p class="note">Jira 스프린트 코멘트를 매주 요약해 Notion DB에 적재 후 재색인합니다(ADF 파서 직접 구현). Slack 스레드 후속 질문, 답변 placeholder, 표 fallback을 처리하고, MCP 엔드포인트를 제공해 로컬 개발 도구에서도 검색할 수 있습니다. Docker 이미지를 ECR에 올려 ArgoCD로 배포하며, 개발팀 외 디자인/기획팀도 사용 중입니다.</p>
+      <figure class="shot"><img src="assets/wikibot.png" alt="위키봇 파이프라인: Notion/GitHub 문서/Jira 코멘트를 Chroma에 색인하고, 하이브리드 검색을 거쳐 Slack과 MCP로 Claude가 답변"></figure>
+      <p class="tech">Slack Bolt, OpenAI Embeddings, Chroma, MiniSearch(BM25), Claude, MCP, K8s CronJob</p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="when">씨너지</span>
+    <div>
+      <h3>공통 라이브러리 MCP 서버</h3>
+      <p>AI 코딩 도구가 사내 공통 라이브러리의 사용법을 몰라 잘못된 import나 중복 구현을 만드는 문제를 줄이고자, 라이브러리 패키지 안에 MCP 서버를 내장했습니다. 컴포넌트 목록과 API 조회, 사용처 검색, import 경로 추천 등 13개 도구를 제공해 에이전트가 패키지 표면을 직접 탐색하며 개발할 수 있습니다.</p>
+      <p class="note">위키봇이 문서 지식을 검색한다면 이쪽은 코드 지식을 검색합니다. npm 패키지의 bin으로 포함해, 라이브러리를 쓰는 저장소 어디서든 설정 한 줄로 연결됩니다.</p>
+      <p class="tech">MCP, Node.js, npm bin</p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="when">씨너지</span>
+    <div>
+      <h3>공유 AI 챗봇 위젯</h3>
+      <p>사내 AI 챗봇을 여러 앱에 붙일 수 있도록 독립 위젯 패키지로 개발했습니다. SSE 스트리밍 파서를 직접 구현해 응답을 조각 단위로 렌더링하고, AbortController로 답변 중단과 오래된 응답 무시를 처리하며, 실패한 질문은 버튼 한 번으로 재시도합니다. 답변에는 긍정/부정 피드백과 코멘트를 남길 수 있고, 같은 턴에 다시 보내면 덮어씁니다.</p>
+      <p class="note">위젯은 Shadow DOM 안에서 렌더링되고 Emotion 캐시를 분리해 호스트 앱과 스타일이 서로 오염되지 않습니다. 전용 axios 인스턴스를 사용해 호스트 앱의 API 클라이언트 주입과도 충돌하지 않습니다. SSR과 스타일 격리까지 vitest 테스트로 검증하고, Storybook 스토리도 함께 작성했습니다.</p>
+      <p class="tech">React, MUI, SSE 스트리밍, Shadow DOM, react-markdown, Vitest, Storybook</p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="when">씨너지</span>
+    <div>
+      <h3>탄소회계 104개국 확장</h3>
+      <p>KR/US로 시작한 탄소회계 기능을 104개국으로 확장했습니다. 계산식이 다른 KR/US는 체계를 분리하고, 나머지는 GS(글로벌 표준) 단일 체계에서 국가별 데이터로 관리합니다. 추상 베이스 클래스 위에 국가별 계산/참조 데이터/API 변환 서비스를 구성하고, 팩토리가 리포트 타입에 맞는 구현을 반환하며, 화면은 국가×서브페이지 매핑 기반으로 lazy 로딩됩니다.</p>
+      <p class="note">계산식/참조 데이터/지원 국가 목록을 시스템 코드로 관리해 프론트엔드와 백엔드가 같은 데이터를 읽습니다. 배포 없이 실시간 반영되며, 신규 국가는 서버 데이터 추가만으로 지원됩니다. 리포트의 PDF 내보내기와 KR/US 다국어(i18next)도 함께 구현했습니다.</p>
+      <figure class="shot"><img src="assets/carbon.png" alt="탄소회계 구조: KR/US/GS 데이터를 공통 팩토리가 받아 대시보드/계산/API 변환 서비스를 생성"></figure>
+      <p class="tech">추상 클래스 + Factory, 시스템 코드 기반 규칙 관리, React.lazy 코드 스플리팅</p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="when">씨너지</span>
+    <div>
+      <h3>OpenAPI 기반 API SDK 자동 생성</h3>
+      <p>JS에서 TS로 마이그레이션하면서 수작업 API 호출 코드를 일일이 옮기는 대신, 백엔드의 Swagger 스펙으로 호출 코드와 타입을 자동 생성하는 방식을 도입했습니다. 현재는 도메인별 npm 패키지로 배포하며, 스펙이 바뀌면 스크립트 한 번으로 전체가 재생성됩니다.</p>
+      <p class="note">커스텀 mustache 템플릿으로 앱별 axios 인스턴스 주입점과 전역 로딩 제어 플래그를 추가했고, 스펙의 operationId 충돌은 생성 전 자동으로 해소합니다. 시스템 코드도 서버에서 받아 상수+타입 쌍으로 생성해 백엔드 코드 값이 프론트엔드 타입으로 검증됩니다.</p>
+      <p class="tech">OpenAPI Generator, 커스텀 mustache 템플릿, 시스템 코드 타입 생성</p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="when">씨너지</span>
+    <div>
+      <h3>실시간 메신저와 알림</h3>
+      <p>STOMP/SockJS 기반 실시간 메신저를 구현했습니다. 1:1과 그룹 채팅(초대, 이름 변경), 대화 요청, 헬프데스크 연결까지 하나의 메신저 흐름 안에서 처리합니다. 서버 이벤트는 단일 구독으로 수신해 타입별로 Redux에 분배하고, 알림뿐 아니라 입찰과 계약 같은 거래 화면들이 이를 실시간 목록 갱신 트리거로 사용합니다.</p>
+      <p class="tech">STOMP/SockJS, Redux Toolkit</p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="when">씨너지</span>
+    <div>
+      <h3>폼 입력 리렌더 최적화</h3>
+      <p>상품 등록 폼의 입력 지연을 React DevTools Profiler로 추적해, 부모 컴포넌트의 <code>watch</code>가 입력마다 필드 전체를 리렌더시키는 원인을 확인했습니다. 각 행이 자기 필드만 <code>useWatch</code>로 구독하도록 구조를 변경해 리렌더 범위를 해당 행으로 축소했습니다.</p>
+      <p class="note">동일한 실수가 반복되지 않도록 원인과 해결 과정을 트러블슈팅 문서로 정리해 팀에 공유했습니다.</p>
+      <p class="tech">React Hook Form, React DevTools Profiler</p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <span class="when">씨너지</span>
+    <div>
+      <h3>공통 라이브러리와 배포 기반</h3>
+      <p>화면마다 반복되는 요구사항을 공통 테이블 컴포넌트로 표준화했습니다. 컬럼 표시/순서/핀 설정의 localStorage 영속화, 드래그 행/컬럼 재정렬, 확장 행(detail), 컬럼 리사이즈를 지원하며, 폼은 react-hook-form Controlled 래퍼로 통일했습니다. 앱 단에서도 입찰, 매수요청, 상환 폼을 각각 단일 컴포넌트로 만들고 mode(생성/수정/재활성) 분기로 재사용해 중복 구현을 줄였습니다.</p>
+      <p class="note">번들은 Rollup ESM + peerDependencies external 구조로 재구성해 용량을 평균 70% 절감했습니다. 백오피스 권한은 서버가 내려주는 permission 문자열을 CASL 규칙으로 변환하고, PermissionBoundary(disable/overlay/hidden 3모드)로 화면 노출을 제어하도록 구성했습니다. 배포는 ECR/ArgoCD/GitHub Packages 워크플로를 구축/운영해왔습니다.</p>
+      <p class="tech">Rollup, CASL, Sentry, Storybook, AWS ECR, ArgoCD</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>PROJECTS</h2>
+  <div class="entry">
+    <span class="when">개인</span>
+    <div>
+      <h3><a href="https://github.com/sanghyoLe/claude-lens">claude-lens — AI 에이전트 출력 통역 레이어</a></h3>
+      <p>AI 에이전트의 작업 로그를 사용자의 이해 수준에 맞춰 통역하는 Claude Code 플러그인입니다. 첫 사용 시 6문항으로 레벨을 판정하고, 같은 작업을 입문/개념/실무 수준으로 다르게 설명합니다.</p>
+      <p class="note">아이콘 타임라인과 변경 파일 트리로 작업을 시각화하고, 푸시/배포/삭제처럼 외부에 영향을 주는 작업은 복구 방법과 함께 별도 표시합니다. 플러그인 마켓플레이스로 설치할 수 있습니다.</p>
+      <p class="tech">Claude Code plugin, Skill, Output style</p>
+    </div>
+  </div>
+  <div class="entry">
+    <span class="when">개인</span>
+    <div>
+      <h3><a href="https://github.com/sanghyoLe/codex-harness">codex-harness — Codex용 워크플로 하네스 생성기</a></h3>
+      <p>revfactory/harness의 아이디어를 Codex 네이티브 구조(AGENTS.md, repo-local skills, custom agent roles)로 재구성한 프로젝트입니다. 요청 한 번으로 프로젝트 도메인을 분석해 에이전트 역할과 검증 게이트를 스캐폴딩합니다.</p>
+      <p class="tech">Codex, Python, 에이전트 워크플로</p>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>EXPERIENCE</h2>
+  <div class="entry">
+    <span class="when">2023.07 — 현재</span>
+    <div>
+      <h3>(주)씨너지 — 프론트엔드 엔지니어</h3>
+      <p>신재생에너지(REC/탄소) 거래 플랫폼. 고객용 플랫폼과 백오피스 두 SPA에서 거래 상품, 계약, 입찰, 상환, 탄소회계, 메신저, 알림 등 도메인 화면을 개발했습니다. 실시간은 STOMP 단일 구독으로 받아 이벤트 타입별로 Redux에 분배하고, 거래 화면들이 이를 목록 갱신 트리거로 사용하도록 구성했습니다.</p>
+    </div>
+  </div>
+  <div class="entry">
+    <span class="when">2022.03 — 2023.02</span>
+    <div>
+      <h3>(주)피트 — 프론트엔드/하이브리드 앱 개발자</h3>
+      <p>운동검사/러너 서비스를 개발했습니다. 다국어 지원과 단위 변환 시스템을 구축하고, JSON 키 비교 스크립트와 미번역 탐지 모듈을 만들었으며, Multi Repo 환경을 Nx 기반 모노레포로 전환했습니다. CJ웰케어 이벤트 페이지로 신규 가입자 900명 유입에 기여했습니다.</p>
+      <p class="tech">Angular, Capacitor, Nx, Firebase</p>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <h2>STACK</h2>
+  <p class="stack-line">TypeScript, React 18, Next.js, Vite, React Router, SWR, Redux Toolkit, React Hook Form, Zod, MUI, Emotion, CASL, STOMP/SockJS, i18next, Rollup, Storybook, Playwright, OpenAPI Generator, Sentry, Nx, Slack Bolt, Notion API, OpenAI Embeddings, Anthropic Claude, Chroma, MCP</p>
+</section>
+
+</main>
+</div>
+
+<script>
+const links = [...document.querySelectorAll('.side nav a')];
+const sections = [...document.querySelectorAll('main section')];
+const map = new Map(links.map(a => [a.hash.slice(1), a]));
+let ticking = false;
+function setActive(){
+  ticking = false;
+  const top = window.scrollY, bottom = top + window.innerHeight;
+  const atBottom = bottom >= document.documentElement.scrollHeight - 2;
+  let current = sections[0], best = -1;
+  for (const s of sections){
+    const sTop = s.offsetTop, sBottom = sTop + s.offsetHeight;
+    const visible = Math.min(sBottom, bottom) - Math.max(sTop, top);
+    if (visible <= 0) continue;
+    // 짧은 섹션도 공정하게: 자기 높이(또는 뷰포트 60%) 대비 보이는 비율로 점수화
+    const score = visible / Math.min(s.offsetHeight, window.innerHeight * 0.6);
+    if (score > best){ best = score; current = s; }
+  }
+  if (atBottom) current = sections[sections.length - 1];
+  links.forEach(a => a.classList.toggle('active', a === map.get(current.id)));
+}
+addEventListener('scroll', () => { if(!ticking){ ticking = true; requestAnimationFrame(setActive); } }, { passive: true });
+setActive();
+</script>
+
+</body>
+</html>
